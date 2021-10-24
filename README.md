@@ -1,9 +1,9 @@
 # CS410 CourseProject : Medical Recommendation Extension
 
+
 ## Team The Recommenders
 
-## Members
-
+Members :
 * Satyo Iswara (iswara2) (captain)
 * Molly Graton (mgraton2)
 * Eric Wong (etw2)
