@@ -8,13 +8,15 @@ Members :
 * Molly Graton (mgraton2)
 * Eric Wong (etw2)
 
-## Overview 
+## Overview + Purpose
 
-Medical journals/articles contains a lot of terms that are domain specific and thus create a challenge for user to comprehend the main concepts in it.  Our team aimed to bridge this challenge by adding a recommender system that helps users. This is relevant to the theme of the class as it extends to an intelligent browsing function and utilizes search/ranking to provide quick information to the user. Our team plans to use PLSA algorithm to generate several topic and significant terms from users browser current page.  After topic and significant term identification, our extension will search the web (via Bing Search API) for related pages for term definitions.  On the returned list, we further rank the document with BM25 to present user with the most relevant information.  
+Medical journals/articles contains a lot of terms that are domain specific and thus create a challenge for user to comprehend the main concepts in it.  Our team aimed to bridge this challenge by adding a recommender system that helps users. With our extension, relevant medical terms on a page will be highlighted and link to articles to learn more about these terms. This creates an easy and efficient way to understand medical articles without having to stop to research each term that a user is not familar with.
 
 ## Implementation
 
-For this recomendation system we use the following external data sets and resources:
+The extension works using BioBert to decide which words would be most useful to be defined for a user, the Bing API to retrieve relevant search results, and a BM25 implementation to further rank these search results. The Chrome Extension also utilizes the MarkJS library to efficiently highlight the terms, and Javascript logic to link the relevant links to the terms.
+
+External data sets and resources:
 * BioBert (https://github.com/dmis-lab/biobert)
 
     BioBert will provide us background languange model that we will use to implement our PLSA model.  Since BioBert is specifically designed for biomedical text mining task, this language model fits our project challanges.
@@ -35,10 +37,13 @@ To use this extension, download the repo as a zip folder and unzip it. Navigate 
 ## Contributions
 
 Satyo Iswara (iswara2):
-* BioBert
+* Researched and implemented BioBert
+* Connected the various components of the extension
 
 Molly Graton (mgraton2):
-* Set up chrome extension
+* Set up chrome extension to connect with other components
+* Integrated highlighting library with extension
 
 Eric Wong (etw2):
-* BM25, Bing API
+* Implemented BM25 algorithm
+* Set up Bing API usage
