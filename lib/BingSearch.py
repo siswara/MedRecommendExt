@@ -16,16 +16,7 @@ Documentation: https://docs.microsoft.com/en-us/bing/search-apis/bing-web-search
 '''
 
 # Add your Bing Search V7 subscription key and endpoint to your environment variables.
-subscription_key = '' 
-endpoint = 'https://api.bing.microsoft.com/v7.0/search'
-
-# Test Query term(s) to search for. 
-query = "UIUC CS410"
-
-# Construct a request
-mkt = 'en-US'
-params = { 'q': query, 'mkt': mkt }
-headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
+subscription_key = '99599100e3994e658caf2d38d995e1e9' 
 
 def BM25(corpus, query, k1=1.5, b=0.75):
     """
@@ -137,37 +128,42 @@ def BM25(corpus, query, k1=1.5, b=0.75):
                 score = score + currScore
         scores.append(score)
 
-
-  
     return scores
 
-# Call the API
-try:
-    response = requests.get(endpoint, headers=headers, params=params)
-    response.raise_for_status()
+def getKey(obj):
+    return obj['score']
 
-    print("Headers:")
-    print(response.headers)
+def getDefinition(searchTerm):
+    endpoint = 'https://api.bing.microsoft.com/v7.0/search'
 
-    #print("JSON Response:")
-    #print(response.json())
+    # Construct a request
+    mkt = 'en-US'
+    params = { 'q': searchTerm, 'mkt': mkt }
+    headers = { 'Ocp-Apim-Subscription-Key': subscription_key }
+    try:
+        response = requests.get(endpoint, headers=headers, params=params)
+        response.raise_for_status()
 
-    print("URL Result:")
-    for webPage in response.json()["webPages"]["value"]:
-        print("{0} - {1}".format(webPage["name"], webPage["url"]))
-    #BM25 Demonstration
-    corpus = []
-    for webPage in response.json()["webPages"]["value"]:
-        corpus.append(webPage["name"])
-    query = "Text Information Systems"
-    bm25_scores = BM25(corpus, query)
-    print("------------------------")
-    print("BM25 SCORES BASED ON QUERY: '" + str(query) + "'")
-    for i in range(0, len(bm25_scores)):
-        print("[Score: {0}]  {1}".format(round(bm25_scores[i],3),corpus[i]))
+        searchResults = response.json()["webPages"]["value"]
 
-    
-    
-except Exception as ex:
-    raise ex
-    
+        #BM25
+        corpus = []
+        for webPage in searchResults:
+            corpus.append(webPage["name"])
+
+        bm25_scores = BM25(corpus, searchTerm)
+        unsorted_score_tuple = []
+        for i in range(0, len(bm25_scores)):
+            unsorted_score_tuple.append({
+                'url' : searchResults[i]['url'],
+                'title' : searchResults[i]['name'],
+                'score' : round(bm25_scores[i],3)
+            })
+
+        sorted_score_tuple = sorted(unsorted_score_tuple, key=getKey, reverse=True)
+
+    except Exception as ex:
+        raise ex
+
+    return sorted_score_tuple
+

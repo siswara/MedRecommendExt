@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="button.css">
-  </head>
-  <body>
-    <button id="highlight"></button>
-    <script src="popup.js"></script>
-    <script src="dist/mark.min.js"></script>
-  </body>
+	<head>
+		<link rel="stylesheet" href="popup.css">
+	</head>
+	<body class="width:50px;">
+		<button id="highlight">Click here to get medical entity recommendation</button>
+		<hr/>
+		<div class="mainList">
+			<div id="loading" class="hideLoading">
+				<img id="loadingGif" src="assets/Infinity-1.4s-200px.gif"/>
+			</div>
+			<div id='message'>
+				<!-- for error -->
+			</div>
+			<div id="entities">
+				
+			</div>
+		</div>
+		<script src="popup.js"></script>
+		<script src="dist/mark.min.js"></script>
+	</body>
 </html>

@@ -4,7 +4,15 @@ from flask import request
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import pipeline
 
+from BingSearch import getDefinition
+
 app = Flask(__name__)
+
+@app.route("/bio_ner_ping", methods=['POST'])
+def bio_ner_ping():
+    return {
+        "return" : "I'm alive!"
+    }
 
 @app.route("/bio_ner", methods=['POST'])
 def bio_ner():
@@ -27,7 +35,7 @@ def bio_ner():
     entity = ''
     for part_entity in part_entities :
         if not ('Continuation' in part_entity['entity']) :
-            if (entity != '') :
+            if (entity != '') and (not (entity in entities)) :
                 entities.append(entity)
             entity = part_entity['word']
         else :
@@ -35,7 +43,17 @@ def bio_ner():
                 entity += part_entity['word'].replace('##', '')
             else:
                 entity += ' ' + part_entity['word']
+    
+    entities_with_links = []
+    for entity in entities:
+        if len(entity) <= 1:
+            continue
+        entity_with_links = {
+            "name" : entity,
+            "links" : getDefinition(entity)
+        }
+        entities_with_links.append(entity_with_links)
 
     return {
-        "entites" : entities
+        "entities_with_links" : entities_with_links
     }
