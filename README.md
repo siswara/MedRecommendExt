@@ -40,9 +40,9 @@ Requirement : python version 3.6
     cd MedRecommendExt/lib
     python3 -m venv env
     source env/bin/activate
-    python3.6 -m install torch
-    python3.6 -m install transformers
-    python3.6 -m install flask
+    python3.6 -m pip install torch
+    python3.6 -m pip install transformers
+    python3.6 -m pip install flask
     export FLASK_APP=bio_ner_flask
     flask run
 ```
