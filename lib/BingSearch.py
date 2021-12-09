@@ -161,9 +161,14 @@ def getDefinition(searchTerm):
             })
 
         sorted_score_tuple = sorted(unsorted_score_tuple, key=getKey, reverse=True)
+        threshold_sorted_score_tuple = []
+        for score_tuple in sorted_score_tuple:
+            if score_tuple['score'] > 0:
+                threshold_sorted_score_tuple.append(score_tuple)
+
 
     except Exception as ex:
         raise ex
 
-    return sorted_score_tuple
+    return threshold_sorted_score_tuple
 

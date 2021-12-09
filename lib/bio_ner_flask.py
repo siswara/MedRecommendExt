@@ -46,7 +46,7 @@ def bio_ner():
     
     entities_with_links = []
     for entity in entities:
-        if len(entity) <= 1:
+        if len(entity) <= 1 or entity.startswith('##'):
             continue
         entity_with_links = {
             "name" : entity,

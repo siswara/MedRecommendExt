@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 					tempInnerHTML += '<li>' + element['name'];
 					tempInnerHTML += '<ol>';
 					element['links'].forEach(link => {
-						tempInnerHTML += '<li>' + link['title'] + ' - <a href="' + link['url'] + '"> '+
+						tempInnerHTML += '<li>' + link['title'] + ' - <a href="' + link['url'] + '" target="_blank"> '+
 						link['url'] + '</a></li>';
 					});
 					tempInnerHTML += '</ol>';
@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 				
 				chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 					chrome.tabs.sendMessage(tabs[0].id, {
-							highlight: true, entities: result['entities']
+							highlight: true, entities: result['entities_with_links']
 						}, function(response) {
 						console.log(response);
 					});
