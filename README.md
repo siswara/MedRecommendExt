@@ -35,9 +35,10 @@ Requirement : python version 3.6
 1. Navigate to chrome://extensions/
 1. Turn developer mode on
 1. Load unpacked to upload the repo folder
-1. Open bash line to install python dependencies. Run the following commands
+1. Open bash line to install python dependencies. Run the following commands:
 ```
-    cd MedRecommendExt/lib
+    cd MedRecommendExt   // or whatever you named the repo folder download
+    cd lib
     python3 -m venv env
     source env/bin/activate
     python3.6 -m pip install torch
@@ -46,6 +47,7 @@ Requirement : python version 3.6
     export FLASK_APP=bio_ner_flask
     flask run
 ```
+Note: if you get an error about "flask run" failing due to an ImportError, run "python3.6 bio_ner_flask.py" to view the cause of the error. You may need to upgrade other packages or uninstall NumPy, but the python3.6 command should tell you what is needed. 
 
 ## How-to-use
 
