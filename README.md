@@ -51,7 +51,7 @@ Note: if you get an error about "flask run" failing due to an ImportError, run "
 
 ## How-to-use
 
-To test out the extension, navigate to a website (for example: X), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the button inside the extension. You can now see the relevant disease entity and the corresponding related links. 
+To test out the extension, navigate to a website (for example: https://www.nejm.org/doi/full/10.1056/NEJMcpc2107353?query=featured_home), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the button inside the extension. You can now see the relevant disease entity and the corresponding related links. 
 
 
 ![Alt Text](https://raw.githubusercontent.com/siswara/MedRecommendExt/main/assets/MedExtension_Gif.gif)
