@@ -29,9 +29,30 @@ External data sets and resources:
     
     Mark JS is a Javascript keyword highlighter library used to highlight the words on the page. 
 
-## Instructions
+## Installation
+Requirement : python version 3.6
+1. Download the repo as a zip folder and unzip it.
+1. Navigate to chrome://extensions/
+1. Turn developer mode on
+1. Load unpacked to upload the repo folder
+1. Open bash line to install python dependencies. Run the following commands
+```
+    cd MedRecommendExt/lib
+    python3 -m venv env
+    source env/bin/activate
+    python3.6 -m install torch
+    python3.6 -m install transformers
+    python3.6 -m install flask
+    export FLASK_APP=bio_ner_flask
+    flask run
+```
 
-To use this extension, download the repo as a zip folder and unzip it. Navigate to chrome://extensions/, turn developer mode on, and click load unpacked to upload the repo folder. The extension should now appear in the extension library. To test out the extension, navigate to a website (for example: X), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the gray box to run the extension. You can now see the relevant highlighted words and the corresponding related links. 
+## How-to-use
+
+To test out the extension, navigate to a website (for example: X), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the button inside the extension. You can now see the relevant disease entity and the corresponding related links. 
+
+
+![Alt Text](https://raw.githubusercontent.com/siswara/MedRecommendExt/main/assets/MedExtension_Gif.gif)
 
 
 ## Contributions
