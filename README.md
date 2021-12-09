@@ -10,11 +10,11 @@ Members :
 
 ## Overview + Purpose
 
-Medical journals/articles contains a lot of terms that are domain specific and thus create a challenge for user to comprehend the main concepts in it.  Our team aimed to bridge this challenge by adding a recommender system that helps users. With our extension, relevant medical terms on a page will be highlighted and link to articles to learn more about these terms. This creates an easy and efficient way to understand medical articles without having to stop to research each term that a user is not familar with.
+Medical journals/articles contains a lot of terms that are domain specific and thus create a challenge for user to comprehend the main concepts in it.  Our team aimed to bridge this challenge by adding a recommender system that helps users. With our extension, relevant medical terms on a page will be identified and link to articles to learn more about these terms. This creates an easy and efficient way to understand medical articles without having to stop to research each term that a user is not familar with.
 
 ## Implementation
 
-The extension works using BioBert to decide which words would be most useful to be defined for a user, the Bing API to retrieve relevant search results, and a BM25 implementation to further rank these search results. The Chrome Extension also utilizes the MarkJS library to efficiently highlight the terms, and Javascript logic to link the relevant links to the terms.
+The extension works using BioBert to decide which words would be most useful to be defined for a user, the Bing API to retrieve relevant search results, and a BM25 implementation to further rank these search results. The Chrome Extension also utilizes Javascript logic to display relevant links to the term.
 
 External data sets and resources:
 * BioBert (https://github.com/dmis-lab/biobert)
@@ -23,11 +23,7 @@ External data sets and resources:
 
 * Bing Search API (https://www.microsoft.com/en-us/bing/apis/bing-web-search-api)
 
-    Bing Search API will provide us with a shorthand of all pages related to our query term which we plan to further rank.
-
-* Mark JS (https://markjs.io/)
-    
-    Mark JS is a Javascript keyword highlighter library used to highlight the words on the page. 
+    Bing Search API will provide us with a shorthand of all pages related to our query term which we plan to further rank. 
 
 ## Installation
 Requirement : python version 3.6
@@ -51,7 +47,7 @@ Note: if you get an error about "flask run" failing due to an ImportError, run "
 
 ## How-to-use
 
-To test out the extension, navigate to a website (for example: https://www.nejm.org/doi/full/10.1056/NEJMcpc2107353?query=featured_home), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the button inside the extension. You can now see the relevant disease entity and the corresponding related links. 
+To test out the extension, navigate to a website (for example: https://www.nejm.org/doi/full/10.1056/NEJMcpc2107353?query=featured_home), and allow the extension permissions by clicking on it (in the upper right hand corner of your chrome window). Once you open the extension, click the button inside the extension. You can now see the relevant disease entities and the corresponding related links. 
 
 
 ![Alt Text](https://raw.githubusercontent.com/siswara/MedRecommendExt/main/assets/MedExtension_Gif.gif)
@@ -61,11 +57,11 @@ To test out the extension, navigate to a website (for example: https://www.nejm.
 
 Satyo Iswara (iswara2):
 * Researched and implemented BioBert
-* Connected the various components of the extension
+* Connected various components of the extension
 
 Molly Graton (mgraton2):
 * Set up chrome extension to connect with other components
-* Integrated highlighting library with extension
+* Connected various components of extension
 
 Eric Wong (etw2):
 * Implemented BM25 algorithm
