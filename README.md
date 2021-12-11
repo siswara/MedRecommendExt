@@ -8,6 +8,8 @@ Members :
 * Molly Graton (mgraton2)
 * Eric Wong (etw2)
 
+Presentation: https://www.youtube.com/watch?v=_hM1AdKOCb4
+
 ## Overview + Purpose
 
 Medical journals/articles contains a lot of terms that are domain specific and thus create a challenge for user to comprehend the main concepts in it.  Our team aimed to bridge this challenge by adding a recommender system that helps users. With our extension, relevant medical terms on a page will be identified and link to articles to learn more about these terms. This creates an easy and efficient way to understand medical articles without having to stop to research each term that a user is not familar with.
